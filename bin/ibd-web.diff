@@ -1,0 +1,9 @@
+110c110
+<     if [ -f ${file} ]; then
+---
+>     if [ -f ${http_pidfile} ]; then
+175a176,177
+>     # Garder les fichier de config si il existe deja
+>     if [ ! -e ${http_cfgfile}  ]; then
+200a203
+>     fi
