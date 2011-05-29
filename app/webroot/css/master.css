@@ -30,8 +30,7 @@ a:visited {
 	color: #ccc;
 	font-size: 90%;
 }
-#header,
-#footer {
+header, footer {
 	background: #800000;
 	border: 5px solid #420D07;
 	color: #fff;
@@ -40,6 +39,7 @@ a:visited {
 	padding: 1em;
 	text-align: center;
 	width: 700px;
+	display: block;
 }
 #content {
 	margin: 1em auto;

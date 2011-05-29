@@ -1,0 +1,19 @@
+Pages :
+Partie administration :
+- Connection admin
+- Validation d'une inscription client
+
+Partie client :
+- Inscription Client
+- Connection Client
+- Inscription participants sur session de cours ( = création participants)
+  - Entrer un à un les participants
+  - Avant de valider on doit récapituler le prix total (faire ca en AJAX)
+- Modification participant (nom)
+- Supprimer un participant d'une session : => mettre à jour le nombre de participant uniquement si début session > 10 jours
+
+Partie ingénieur responsable :
+- Afficher la liste des participants inscrits d'une session (soit passée, soit à venir)
+
+Pages non demandés mais qui serait bien utile :
+- Affichage des sessions disponibles (celle qui sont futures et places restantes)
