@@ -38,6 +38,9 @@ header, footer {
   display: block;
   text-shadow: 0px 1px 2px black;
 }
+footer {
+  font-size: 1em;
+}
 #content {
   padding: 1em 0;
 }
