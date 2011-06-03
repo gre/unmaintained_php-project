@@ -11,7 +11,7 @@ class IngenieurController extends AppController
   {
     $this->loadView('ingenieur/auth');
   }
-  public function actionAuth()
+  public function actionSession()
   {
     $this->loadView('ingenieur/session');
   }

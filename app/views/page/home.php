@@ -7,7 +7,7 @@ $this->setLayoutVar('pageTitle', "Page d'accueil");
 <h2>Vous êtes :</h2>
 
 <ul>
-  <li><a href="/admin">Administrateur</a></li>
-  <li><a href="/client">Client</a></li>
-  <li><a href="/ingenieur">Ingénieur</a></li>
+  <li><a href="/admin/auth">Administrateur</a></li>
+  <li><a href="/client/auth">Client</a></li>
+  <li><a href="/ingenieur/auth">Ingénieur</a></li>
 </ul>

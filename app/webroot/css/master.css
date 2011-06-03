@@ -22,25 +22,75 @@ ul, ol {
   padding-left: 2em;
 }
 
+.half {
+	float: left;
+	width: 48%;
+	padding: 1%;
+	vertical-align: top;
+}
+
 #wrapper {
   width: 700px;
   margin: 10px auto;
 }
 
-header, footer {
-  background: #2A3361;
-  border: 5px solid #000;
-  padding: 0.5em;
-  color: #fff;
+header {
+  padding: 10px;
   font-size: 1.2em;
   font-weight: bold;
   text-align: center;
   display: block;
   text-shadow: 0px 1px 2px black;
+  background: #5A6391;
+  border: 5px solid #347;
+  color: #fff;
+	letter-spacing: 0.1em;
 }
+
+header a {
+	color: white;
+	text-decoration: none;
+}
+
+nav {
+	padding: 10px;
+	font-size: 1.4em;
+	font-family: monospace;
+}
+
+footer {
+	text-align: center;
+	border-top: 2px dashed #aaa;
+	color: #aaa;
+	padding-top: 5px;
+	margin: 10px;
+	clear: both;
+}
+
+table {
+border: medium solid #6495ed;
+border-collapse: collapse;
+width: 100%;
+font-family: monospace;
+}
+th {
+font-weight: bold;
+border: thin solid #6495ed;
+padding: 5px;
+background-color: #D0E3FA;
+text-align: center;
+}
+td {
+border: thin solid #6495ed;
+padding: 5px;
+text-align: center;
+background-color: #ffffff;
+}
+
 footer {
   font-size: 1em;
 }
 #content {
-  padding: 1em 0;
+  padding: 0;
+	margin-bottom: 1em;
 }

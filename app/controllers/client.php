@@ -11,9 +11,18 @@ class ClientController extends AppController
   {
     $this->loadView('client/auth');
   }
-  public function actionSession()
+  public function actionInscription()
   {
-    $this->loadView('client/session');
+    $this->loadView('client/inscription');
+  }
+  public function actionSession($sessionId)
+  {
+    if(is_null($sessionId))
+      throw new Lvc_Exception("Forbidden."); // FIXME ? comment utiliser ?
+    if($sessionId!=1 && $sessionId!=2 && $sessionId!=3)
+      throw new Lvc_Exception("Session non trouvée."); // FIXME ? comment utiliser ?
+    $this->setVar('sessionId', $sessionId); // erf, DRY!
+    $this->loadView('client/session'); // erf DRY!
   }
   public function actionEditParticipant()
   {

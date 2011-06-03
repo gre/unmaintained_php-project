@@ -22,17 +22,18 @@
 <body>
   <div id="wrapper">
     <header>
-      <?php echo $pageTitle ?>
+      <a href="/">Gestion des Activités de la Société de Service</a>
     </header>
     
-    <nav></nav>
+		<!-- TODO -->
+    <nav><?php echo $pageTitle ?></nav>
     
     <div id="content">
       <?php echo $layoutContent ?>
     </div>
 
     <footer>
-      Gestion des Activités de la Société de Service
+      par Gaetan Renaudeau et Nicolae Namolovan
     </footer>
   </div>
 </body>

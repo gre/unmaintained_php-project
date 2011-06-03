@@ -1,5 +1,5 @@
 <?php
-$this->setLayoutVar('pageTitle', 'Inscrire des participants');
+$this->setLayoutVar('pageTitle', "S'inscrire");
 ?>
 
 
