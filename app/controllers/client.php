@@ -15,6 +15,14 @@ class ClientController extends AppController
   {
     $this->loadView('client/inscription');
   }
+  public function actionInscriptionSent()
+  {
+    $this->loadView('client/inscriptionSent');
+  }
+  public function actionInscriptionPending()
+  {
+    $this->loadView('client/inscriptionPending');
+  }
   public function actionSession($sessionId)
   {
     if(is_null($sessionId))
@@ -27,6 +35,10 @@ class ClientController extends AppController
   public function actionEditParticipant()
   {
     $this->loadView('client/editParticipant');
+  }
+  public function actionProfile()
+  {
+    $this->loadView('client/profile');
   }
 }
 

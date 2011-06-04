@@ -1,7 +1,8 @@
 <?php
 $this->setLayoutVar('pageTitle', 'Client - Accueil');
+$this->setLayoutVar('nav', array("/client/index" => "Sessions"));
+$this->setLayoutVar('connected', true);
 ?>
-
 
 <h1>Les sessions</h1>
 <h2>Sessions disponibles à venir</h2>

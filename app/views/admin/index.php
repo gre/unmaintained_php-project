@@ -1,5 +1,6 @@
 <?php
 $this->setLayoutVar('pageTitle', 'Administration - Accueil');
+$this->setLayoutVar('nav', array("" => "Administration"));
 ?>
 
 <h1>Clients</h1>

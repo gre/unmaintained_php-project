@@ -1,5 +1,6 @@
 <?php
 $this->setLayoutVar('pageTitle', 'Client - Authentification');
+$this->setLayoutVar('nav', array("/client/auth" => "Connexion client"));
 ?>
 
 <div class="half">

@@ -1,5 +1,6 @@
 <?php
 $this->setLayoutVar('pageTitle', 'Ingénieur - Authentification');
+$this->setLayoutVar('nav', array("/ingenieur/auth" => "Connexion ingénieur"));
 ?>
 
 <form action="/ingenieur">

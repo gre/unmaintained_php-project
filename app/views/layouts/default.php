@@ -24,9 +24,18 @@
     <header>
       <a href="/">Gestion des Activités de la Société de Service</a>
     </header>
+      <?php if($connected) { ?>
+<div id="loginInfos">
+  <span class="message">Connecté en tant que <a class="name" href="/client/profile">NOM Prénom</a></span>
+  <a class="logout" href="/client/auth">Déconnection</a>
+</div>
+      <?php } ?>
     
 		<!-- TODO -->
-    <nav><?php echo $pageTitle ?></nav>
+    <nav><?php 
+    foreach ($nav as $link => $n) {
+      echo '<a href="'.$link.'">'.$n.'</a> ';
+    }?></nav>
     
     <div id="content">
       <?php echo $layoutContent ?>

@@ -1,5 +1,6 @@
 <?php
 $this->setLayoutVar('pageTitle', 'Administration - Authentification');
+$this->setLayoutVar('nav', array("/admin/auth" => "Connexion administration"));
 ?>
 
 <form action="/admin">
