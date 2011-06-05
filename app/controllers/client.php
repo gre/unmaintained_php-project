@@ -32,10 +32,6 @@ class ClientController extends AppController
     $this->setVar('sessionId', $sessionId); // erf, DRY!
     $this->loadView('client/session'); // erf DRY!
   }
-  public function actionEditParticipant()
-  {
-    $this->loadView('client/editParticipant');
-  }
   public function actionProfile()
   {
     $this->loadView('client/profile');
