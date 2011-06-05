@@ -56,7 +56,12 @@ $this->setLayoutVar('nav', array("" => "Administration"));
       <td>31 rue boucher, 77000 Melun</td>
       <td>Titi</td>
       <td>Refusé
-      <a href="#">Changer</a></td>
+      <a href="#">Changer</a>
+      <div class="traitement">
+        <button name="action" value="valid" type="submit">Valider</button> 
+        <button name="action" value="refuse" type="submit">Refuser</button> 
+      </div>
+      </td>
     </tr>
   </tbody>
 </table>

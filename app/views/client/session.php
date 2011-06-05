@@ -103,10 +103,13 @@ $this->setLayoutVar('connected', true);
       </td>
     </tr>
     <tr>
-      <td>John John</td>
+      <td><form>
+        <input value="John John" type="text" />
+        <button type="submit">Modifier</button>
+      </form></td>
       <td>05/05/2011</td>
       <td>
-        <button>Modifier</button>
+        <button disabled="disabled">Modifier</button><!-- disabled is temporary (just for mock) -->
         <button onclick="confirm('Annuler l\'inscription de  John John ?')">Supprimer</button>
       </td>
     </tr>
