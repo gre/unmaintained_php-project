@@ -11,3 +11,5 @@ $this->setLayoutVar('pageTitle', "Page d'accueil");
   <li><a href="/client/auth">Client</a></li>
   <li><a href="/ingenieur/auth">Ingénieur</a></li>
 </ul>
+
+<todo>cela sera 3 images</todo>

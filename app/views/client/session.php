@@ -34,9 +34,20 @@ $this->setLayoutVar('connected', true);
   </tbody>
 </table>
 
-<p>
-(TODO: formulaire d'inscription de personnes)
-</p>
+<h2>Vos participants</h2>
+<p>Aucun de vos participants.</p>
+
+<h2>Nouveau participant</h2>
+<form>
+  <p>
+    <label for="nom_part">Nom du participant</label>
+    <input id="nom_part" type="text" />
+  </p>
+  
+  <p class="buttons">
+    <button type="submit">Inscrire ce participant</button>
+  </p>
+</form>
 
 <?php } else if($sessionId==2) {  ?>
 <table>
@@ -58,9 +69,61 @@ $this->setLayoutVar('connected', true);
   </tbody>
 </table>
 
-<p>
-(TODO: liste des personnes inscrites et gestion + formulaire d'inscription de personnes)
-</p>
+<h2>Vos participants</h2>
+
+<table>
+  <thead>
+    <th>Nom du participant</th>
+    <th>Date d'inscription</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Big Dates</td>
+      <td>05/05/2011</td>
+      <td>
+        <button>Modifier</button>
+        <button onclick="confirm('Annuler l\'inscription de Big Dates ?')">Supprimer</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Steven John</td>
+      <td>05/05/2011</td>
+      <td>
+        <button>Modifier</button>
+        <button onclick="confirm('Annuler l\'inscription de  Steven John ?')">Supprimer</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Jack Stones</td>
+      <td>05/05/2011</td>
+      <td>
+        <button>Modifier</button>
+        <button onclick="confirm('Annuler l\'inscription de  Jack Stones ?')">Supprimer</button>
+      </td>
+    </tr>
+    <tr>
+      <td>John John</td>
+      <td>05/05/2011</td>
+      <td>
+        <button>Modifier</button>
+        <button onclick="confirm('Annuler l\'inscription de  John John ?')">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Nouveau participant</h2>
+<form>
+  <p>
+    <label for="nom_part">Nom du participant</label>
+    <input id="nom_part" type="text" />
+  </p>
+  
+  <p class="buttons">
+    <button type="submit">Inscrire ce participant</button>
+  </p>
+</form>
 
 <?php } else {  ?>
 <table>
@@ -82,8 +145,31 @@ $this->setLayoutVar('connected', true);
   </tbody>
 </table>
 
-<p>
-(TODO: liste des personnes inscrites)
-</p>
+<h2>Vos participants</h2>
+
+<table>
+  <thead>
+    <th>Nom du participant</th>
+    <th>Date d'inscription</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Big Dates</td>
+      <td>05/05/2011</td>
+    </tr>
+    <tr>
+      <td>Steven John</td>
+      <td>05/05/2011</td>
+    </tr>
+    <tr>
+      <td>Jack Stones</td>
+      <td>05/05/2011</td>
+    </tr>
+    <tr>
+      <td>John John</td>
+      <td>05/05/2011</td>
+    </tr>
+  </tbody>
+</table>
 
 <?php } ?>

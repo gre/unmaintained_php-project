@@ -60,3 +60,5 @@ $this->setLayoutVar('nav', array("" => "Administration"));
     </tr>
   </tbody>
 </table>
+
+<todo>Une pagination ici</todo>

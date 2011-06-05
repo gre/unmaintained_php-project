@@ -121,6 +121,9 @@ padding: 5px;
 text-align: center;
 background-color: #ffffff;
 }
+tr:nth-child(odd) td {
+  background-color: #EFF4FA;
+}
 
 footer {
   font-size: 1em;
@@ -128,4 +131,22 @@ footer {
 #content {
   padding: 0;
 	margin-bottom: 1em;
+}
+
+todo {
+  display: inline-block;
+  font-style: italic;
+  padding: 5px 10px;
+  margin: 10px;
+  color: #666;
+  font-size: 0.9em;
+  border: 2px dashed #ccc;
+  background: #eee;
+}
+todo:before {
+  content: '⌦ TODO: ';
+  font-weight: bold;
+}
+todo:after {
+  content: ' ';
 }

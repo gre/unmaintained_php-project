@@ -18,15 +18,6 @@ $this->setLayoutVar('connected', true);
   </thead>
   <tbody>
     <tr>
-      <td><a href="/client/session/1">HTML5</a></td>
-      <td>23/07/2011</td>
-      <td>26/07/2011</td>
-      <td>45 places</td>
-      <td>
-        <a href="/client/session/1">Inscrire des participants</a>
-      </td>
-    </tr>
-    <tr>
       <td><a href="/client/session/2">CSS3</a></td>
       <td>03/07/2011</td>
       <td>06/07/2011</td>
@@ -34,6 +25,15 @@ $this->setLayoutVar('connected', true);
       <td>
         Vous avez inscrit 3 participants.<br/>
         <a href="/client/session/2">Gérer mes participants</a>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="/client/session/1">HTML5</a></td>
+      <td>23/07/2011</td>
+      <td>26/07/2011</td>
+      <td>45 places</td>
+      <td>
+        <a href="/client/session/1">Inscrire des participants</a>
       </td>
     </tr>
   </tbody>
@@ -64,3 +64,5 @@ $this->setLayoutVar('connected', true);
     </tr>
   </tbody>
 </table>
+
+<todo>Une pagination ici</todo>
