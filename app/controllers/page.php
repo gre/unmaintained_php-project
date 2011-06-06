@@ -8,7 +8,7 @@ class PageController extends AppController
       throw new Lvc_Exception('File Not Found: ' . $sourceFile);
     }
     
-    $this->loadView('page/' . rtrim($pageName, '/'));
+    $this->loadView('page/' . basename($pageName));
   }
 }
 

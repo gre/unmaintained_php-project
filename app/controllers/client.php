@@ -2,18 +2,49 @@
 
 class ClientController extends AppController
 {
-  // protected $layout = 'client';
+  protected function beforeAction() {
+    parent::beforeAction();
+    include(APP_PATH.'models/client.php');
+  }
   public function actionIndex()
   {
+    $this->requireLogin();
     $this->loadView('client/index');
   }
   public function actionAuth()
   {
+    if (!$this->_isPost) {
+      $this->loadView('client/auth');
+      return;
+    }
+    if (!ClientModel::userConfirmed($this->post['login'])) {
+        $this->setVar('error',true);
+        $this->render();
+    }
+    if (ClientModel::login($this->post['login'],$this->post['password'])) {
+        $user = ClientModel::getByLogin($this->post['login']);
+        $_SESSION['user'] = $user['code_client'];
+        $this->redirect("/session/index");
+        die();
+    }
+    $this->setVar('error',true);
     $this->loadView('client/auth');
   }
   public function actionInscription()
   {
-    $this->loadView('client/inscription');
+    if (!$this->_isPost) {
+      $this->loadView('client/inscription');
+      return;
+    }
+    $codeClient = ClientModel::register($this->post);
+    if (!$codeClient) {
+        $this->setVar('error',true);
+        var_dump($this->post);
+        $this->setVars($this->post);
+        $this->loadView('client/inscription');
+        return;
+    }
+    $this->loadView('client/inscriptionSent');
   }
   public function actionInscriptionSent()
   {

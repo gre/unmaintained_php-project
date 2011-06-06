@@ -8,4 +8,8 @@ class AppView extends Lvc_View
 	}
 }
 
+function e($str) {
+	echo htmlspecialchars($str, ENT_NOQUOTES, "UTF-8");
+}
+
 ?>

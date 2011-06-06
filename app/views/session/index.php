@@ -1,4 +1,27 @@
 <?php
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Places restantes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php freach($sessions AS $session): ?>
+    <tr>
+      <td><?php e($session['nom_c'])?></td>
+      <td><?php e($session['date_deb_ses'])?></td>
+      <td><?php e($session['date_fin_ses'])?></td>
+      <td>45 places</td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+
 $name="";
 if($sessionId==1) {
   $name="HTML5";

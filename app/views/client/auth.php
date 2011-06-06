@@ -3,9 +3,15 @@ $this->setLayoutVar('pageTitle', 'Client - Authentification');
 $this->setLayoutVar('nav', array("/client/auth" => "Connexion client"));
 ?>
 
+<?php if (isset($error)): ?>
+<div class="error">
+Erreur, l'identifiant ou le mot de passe sont incorrect.
+</div>
+<?php endif;?>
+
 <div class="half">
   <h2>S'authentifier</h2>
-  <form action="/client">
+  <form action="/client/auth" method="post">
     <p>
       <label for="identifiant">Identifiant</label>
       <input id="identifiant" type="text" name="login" />

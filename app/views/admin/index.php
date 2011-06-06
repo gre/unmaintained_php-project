@@ -16,21 +16,23 @@ $this->setLayoutVar('nav', array("" => "Administration"));
     </tr>
   </thead>
   <tbody>
+    <?php foreach($unconfirmedUsers AS $user): ?>
     <tr>
-      <td>TOT771</td>
-      <td>Toto TOTO</td>
-      <td>34 rue boucher, 77000 Melun</td>
-      <td>Toto</td>
-      <td><form>
-        <input type="hidden" name="clientId" value="0" />
+      <td><?php e($user['code_client'])?></td>
+      <td><?php e($user['nom_client'])?></td>
+      <td><?php e($user['adresse_cl'])?></td>
+      <td><?php e($user['raison_sociale'])?></td>
+      <td><form type="POST" action="/admin/clientStatus">
+        <input type="hidden" name="clientId" value="<?php e($user['code_client'])?>" />
         <button name="action" value="valid" type="submit">Valider</button> 
         <button name="action" value="refuse" type="submit">Refuser</button> 
       </form></td>
     </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
 
-<h2>Les derniers inscrits</h2>
+<h2>Les derniers refusés</h2>
 <table>
   <thead>
     <tr>
@@ -42,19 +44,12 @@ $this->setLayoutVar('nav', array("" => "Administration"));
     </tr>
   </thead>
   <tbody>
+    <?php foreach($refusedUsers AS $user): ?>
     <tr>
-      <td>TAT771</td>
-      <td>Tata TATA</td>
-      <td>32 rue boucher, 77000 Melun</td>
-      <td>Tata</td>
-      <td>Validé
-      <a href="#">Changer</a></td>
-    </tr>
-    <tr>
-      <td>TIT771</td>
-      <td>Titi TITI</td>
-      <td>31 rue boucher, 77000 Melun</td>
-      <td>Titi</td>
+      <td><?php e($user['code_client'])?></td>
+      <td><?php e($user['nom_client'])?></td>
+      <td><?php e($user['adresse_cl'])?></td>
+      <td><?php e($user['raison_sociale'])?></td>
       <td>Refusé
       <a href="#">Changer</a>
       <div class="traitement">
@@ -63,6 +58,7 @@ $this->setLayoutVar('nav', array("" => "Administration"));
       </div>
       </td>
     </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
 

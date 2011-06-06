@@ -3,7 +3,7 @@ $this->setLayoutVar('pageTitle', 'Administration - Authentification');
 $this->setLayoutVar('nav', array("/admin/auth" => "Connexion administration"));
 ?>
 
-<form action="/admin">
+<form action="/admin" method="POST">
   <p>
     <label for="identifiant">Identifiant</label>
     <input id="identifiant" type="text" name="login" />

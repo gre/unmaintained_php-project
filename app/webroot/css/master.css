@@ -128,51 +128,8 @@ tr:nth-child(odd) td {
 footer {
   font-size: 1em;
 }
+
 #content {
   padding: 0;
 	margin-bottom: 1em;
-}
-
-todo {
-  display: inline-block;
-  font-style: italic;
-  padding: 5px 10px;
-  margin: 10px;
-  color: #666;
-  font-size: 0.9em;
-  border: 2px dashed #ccc;
-  background: #eee;
-}
-todo:before {
-  content: '⌦ TODO: ';
-  font-weight: bold;
-}
-todo:after {
-  content: ' ';
-}
-
-.traitement { 
-position:absolute;
-margin-top:10px;
-background:#74A5Fd;
-padding:5px;
-border:solid 1px #47c;
-border-radius:3px;
--webkit-box-shadow:1px 1px 4px rgba(0,0,0,0.6);
--moz-box-shadow:1px 1px 4px rgba(0,0,0,0.6);
-box-shadow:1px 1px 4px rgba(0,0,0,0.6)
-}
-.traitement:after {
-display:block;
-content:" ";
-position:absolute;
-top:-18px;
-left: 50%;
-width:0;
-height:0;
-border:9px solid;
-border-color:transparent transparent #74A5Fd transparent
-}
-.traitement button {
-  border: none;
 }

@@ -32,17 +32,27 @@
       <?php } ?>
     
 		<!-- TODO -->
-    <nav><?php 
-    foreach ($nav as $link => $n) {
-      echo '<a href="'.$link.'">'.$n.'</a> ';
-    }?></nav>
+    <nav><?php
+    if (isset($nav)):
+    foreach ($nav as $link => $n): ?>
+      <a href="<?php echo $link?>"><?php e($n)?></a>
+    <?php
+    endforeach;
+    endif; ?></nav>
     
     <div id="content">
       <?php echo $layoutContent ?>
     </div>
-
+    <div class="separator"></div>
     <footer>
       par Gaetan Renaudeau et Nicolae Namolovan
+      <?php if (DEBUG): ?>
+      <div class="debug">
+	<?php
+	  echo nl2br(AppModel::query_log_get());
+	?>
+      </div>
+      <?php endif; ?>
     </footer>
   </div>
 </body>
