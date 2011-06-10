@@ -9,12 +9,7 @@ define('WWW_JS_PATH', WWW_BASE_PATH . 'js/');
 define('WWW_IMAGE_PATH', WWW_BASE_PATH . 'images/');
 
 // Database configuration
-define('DB_HOST', 'localhost');
-define('DB_PORT', '5432');
-define('DB_NAME', 'inscription');
-define('DB_USER', 'adrenalin');
-define('DB_PASS', '123456');
-
+include('credentials.php');
 define('DEBUG',true);
 
 if (!DEBUG)
