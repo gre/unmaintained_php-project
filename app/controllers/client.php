@@ -17,8 +17,8 @@ class ClientController extends AppController
       $this->loadView('client/auth');
       return;
     }
-    if (!ClientModel::userConfirmed($this->post['login'])) {
-        $this->setVar('error',true);
+    if (!ClientModel::isConfirmed($this->post['login'])) {
+        $this->setVar('error',"Erreur, l'utilisateur n'ete pas confirme.");
         $this->render();
     }
     if (ClientModel::login($this->post['login'],$this->post['password'])) {
@@ -27,7 +27,7 @@ class ClientController extends AppController
         $this->redirect("/session/index");
         die();
     }
-    $this->setVar('error',true);
+    $this->setVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
     $this->loadView('client/auth');
   }
   public function actionInscription()
@@ -59,7 +59,7 @@ class ClientController extends AppController
     if(is_null($sessionId))
       throw new Lvc_Exception("Forbidden."); // FIXME ? comment utiliser ?
     if($sessionId!=1 && $sessionId!=2 && $sessionId!=3)
-      throw new Lvc_Exception("Session non trouvée."); // FIXME ? comment utiliser ?
+      throw new Lvc_Exception("Session non trouv��e."); // FIXME ? comment utiliser ?
     $this->setVar('sessionId', $sessionId); // erf, DRY!
     $this->loadView('client/session'); // erf DRY!
   }

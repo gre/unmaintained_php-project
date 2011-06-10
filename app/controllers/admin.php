@@ -9,7 +9,7 @@ class AdminController extends AppController
     return isset($_SESSION['isAdmin']);
   }
   public function _requireAdmin() {
-    if (!$this->_isAdmin) {
+    if (!$this->_isAdmin()) {
         $this->redirect("/admin/auth");
         exit();
     }
@@ -18,24 +18,24 @@ class AdminController extends AppController
   {
     $this->_requireAdmin();
     $this->setVar('unconfirmedUsers',ClientModel::getUsersForConfirmation());
-    $this->setVar('refusedUsers',ClientModel::getRefusedUsers());
+    $this->setVar('lastUsers',ClientModel::getLastUsers());
     $this->loadView('admin/index');
   }
   public function actionAuth()
   {
-    $this->_requireAdmin();
     if ($this->_isPost) {
       $_SESSION['isAdmin'] = 1;
-      $this->redirect('admin/index');
+      $this->redirect('/admin/index');
       die();
     }
     $this->loadView('admin/auth');
   }
   
-  public function clientStatus() {
+  public function actionClientStatus() {
     $this->_requireAdmin();
     if (!$this->_isPost) throw new Lvc_Exception('Post required');
     ClientModel::setConfirm($this->post['clientId'],$this->post['action']=='valid');
+    $this->redirect('/admin/index');
   }
 }
 

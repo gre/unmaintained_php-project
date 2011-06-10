@@ -5,7 +5,7 @@ $this->setLayoutVar('nav', array("/client/auth" => "Connexion client"));
 
 <?php if (isset($error)): ?>
 <div class="error">
-Erreur, l'identifiant ou le mot de passe sont incorrect.
+<?php e($error) ?>
 </div>
 <?php endif;?>
 

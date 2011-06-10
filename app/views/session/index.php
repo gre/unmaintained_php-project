@@ -1,5 +1,3 @@
-<?php
-
 <table>
   <thead>
     <tr>
@@ -10,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php freach($sessions AS $session): ?>
+    <?php foreach($sessions AS $session): ?>
     <tr>
       <td><?php e($session['nom_c'])?></td>
       <td><?php e($session['date_deb_ses'])?></td>
@@ -21,23 +19,14 @@
   </tbody>
 </table>
 
+<?php
 
-$name="";
-if($sessionId==1) {
-  $name="HTML5";
- }
-if($sessionId==2) {
-  $name="CSS3";
- }
-if($sessionId==3) {
-  $name="WebGL";
- }
 $this->setLayoutVar('pageTitle', 'Session '.$name.' : Gérer vos participants');
 $this->setLayoutVar('nav', array("/client/index" => "Sessions", "" => $name.' : Gérer vos participants'));
 $this->setLayoutVar('connected', true);
 ?>
 
-<?php if($sessionId==1) { ?>
+
 <table>
   <thead>
     <tr>
@@ -72,7 +61,7 @@ $this->setLayoutVar('connected', true);
   </p>
 </form>
 
-<?php } else if($sessionId==2) {  ?>
+
 <table>
   <thead>
     <tr>
@@ -151,7 +140,6 @@ $this->setLayoutVar('connected', true);
   </p>
 </form>
 
-<?php } else {  ?>
 <table>
   <thead>
     <tr>
@@ -197,5 +185,3 @@ $this->setLayoutVar('connected', true);
     </tr>
   </tbody>
 </table>
-
-<?php } ?>

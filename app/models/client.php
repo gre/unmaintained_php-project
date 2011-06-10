@@ -25,7 +25,6 @@ class ClientModel extends AppModel {
   {
     $row = self::getByLogin($login);
     if ($row == false) return false;
-    echo sha1($password)," == ",$row['mpclient'];
     return sha1($password) == $row['mpclient'];
   }
   
@@ -40,7 +39,7 @@ class ClientModel extends AppModel {
   {
     $result = self::query('SELECT * FROM Client WHERE code_client=$1',$codeClient);
     if (pg_num_rows($result) == 0) return false;
-    return pg_fetch_assoc($query);
+    return pg_fetch_assoc($result);
   }
   
   static function getUsersForConfirmation()
@@ -49,9 +48,9 @@ class ClientModel extends AppModel {
     return self::fetchAll($query);
   }
   
-  static function getRefusedUsers()
+  static function getLastUsers()
   {
-    $query = self::query('SELECT * FROM Client WHERE confirme = FALSE');
+    $query = self::query('SELECT * FROM Client WHERE confirme IS NOT NULL LIMIT 20');
     return self::fetchAll($query);
   }
 
@@ -63,6 +62,14 @@ class ClientModel extends AppModel {
   {
     $user = self::getByCodeClient($codeClient);
     if (!$user) return false;
-    return self::query('UPDATE Client SET confirme='.$confirm?'TRUE':'FALSE');
+    $confirm = ($confirm?'TRUE':'FALSE');
+    
+    return self::query('UPDATE Client SET confirme=$1 WHERE code_client=$2',array($confirm,$codeClient));
+  }
+  
+  static function isConfirmed($login) {
+  	$user = self::getByLogin($login);
+  	if (!$user) return false;
+  	return $user['confirme'] == 't';
   }
 }

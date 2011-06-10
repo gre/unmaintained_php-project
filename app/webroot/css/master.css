@@ -160,7 +160,8 @@ border:solid 1px #47c;
 border-radius:3px;
 -webkit-box-shadow:1px 1px 4px rgba(0,0,0,0.6);
 -moz-box-shadow:1px 1px 4px rgba(0,0,0,0.6);
-box-shadow:1px 1px 4px rgba(0,0,0,0.6)
+box-shadow:1px 1px 4px rgba(0,0,0,0.6);
+display: none;
 }
 .traitement:after {
 display:block;

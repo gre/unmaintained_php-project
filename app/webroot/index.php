@@ -25,7 +25,7 @@ if (isset($_GET['url']) && $_GET['url'] === 'favicon.ico') {
 		$request = new Lvc_Request();
 		$request->setControllerName('error');
 		$request->setActionName('view');
-		$request->setActionParams(array('error' => '404'));
+		$request->setActionParams(array('error' =>  $e->getMessage() ));
 
 		// Get a new front controller without any routers, and have it process our handmade request.
 		$fc = new Lvc_FrontController();

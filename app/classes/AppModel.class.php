@@ -11,7 +11,7 @@ class AppModel
   * Example of use
   * query('SELECT * FROM Clients WHERE code_client=$1','nammd');
   **/
-  function query($query,$params='')
+  static function query($query,$params='')
   {
     if(strstr($query,'$') === false) {
         self::query_log($query);
