@@ -37,7 +37,7 @@ class AppController extends Lvc_PageController
         }
         
         protected function requireLogin() {
-            if (!$this->isLogged) {
+            if (!$this->isLogged()) {
                 $this->redirect("/client/auth");
                 exit();
             }
@@ -47,11 +47,16 @@ class AppController extends Lvc_PageController
             if (!isset($this->_model)) {
                 return;
             }
-            $file = APP_PATH.'models/'.$this->_model.'.php';
-            if (!file_exists($file)) {
-                new Lvc_Exception("Controller _model not found. Details: ".$file);
-            }
-            include($file);
+            $models = $this->_model;
+            if (!is_array($this->_model)) $models = array($this->_model);
+            
+            foreach($models AS $model) {
+	            $file = APP_PATH.'models/'.$model.'Model.php';
+	            if (!file_exists($file)) {
+	                new Lvc_Exception("Controller _model not found. Details: ".$file);
+	            }
+	            include($file);
+	        }
         }
         
 	public function requireCss($cssFile)

@@ -34,6 +34,12 @@ class AppModel
         return $result;
     return pg_fetch_all($query);
   }
+
+  static function fetchFirst($query) {
+    if (pg_num_rows($query) == 0)
+        return false;
+    return pg_fetch_assoc($query);
+  }
   
   // A function used for debuging
   static function query_log($query,$params='')

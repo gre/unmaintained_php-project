@@ -2,14 +2,15 @@
 
 class ClientController extends AppController
 {
+	protected $_model = 'client';
+	
   protected function beforeAction() {
     parent::beforeAction();
-    include(APP_PATH.'models/client.php');
   }
   public function actionIndex()
   {
     $this->requireLogin();
-    $this->loadView('client/index');
+    $this->redirect("/session/index");
   }
   public function actionAuth()
   {
@@ -20,6 +21,7 @@ class ClientController extends AppController
     if (!ClientModel::isConfirmed($this->post['login'])) {
         $this->setVar('error',"Erreur, l'utilisateur n'ete pas confirme.");
         $this->render();
+        die();
     }
     if (ClientModel::login($this->post['login'],$this->post['password'])) {
         $user = ClientModel::getByLogin($this->post['login']);
