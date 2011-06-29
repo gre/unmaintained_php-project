@@ -6,10 +6,8 @@ $this->setLayoutVar('pageTitle', "Page d'accueil");
 
 <h2>Vous êtes :</h2>
 
-<ul>
-  <li><a href="/admin/auth">Administrateur</a></li>
-  <li><a href="/client/auth">Client</a></li>
-  <li><a href="/ingenieur/auth">Ingénieur</a></li>
+<ul class="mainNav">
+  <li class="admin"><a href="/admin/auth">Administrateur</a></li>
+  <li class="client"><a href="/client/auth">Client</a></li>
+  <li class="ingenieur"><a href="/ingenieur/auth">Ingénieur</a></li>
 </ul>
-
-<todo>cela sera 3 images</todo>

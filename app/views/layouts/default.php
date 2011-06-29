@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title><?php echo $pageTitle ?></title>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:regular,italic,bold,bolditalic&v1' rel='stylesheet' type='text/css'>
   <?php
   
   if (isset($requiredCss)) {
@@ -22,16 +23,13 @@
 <body>
   <div id="wrapper">
     <header>
-      <a href="/">Gestion des Activités de la Société de Service</a>
-    </header>
+      <a class="title" href="/" title="Gestion des Activités de la Société de Service">GASS</a>
       <?php if($connected) { ?>
 <div id="loginInfos">
   <span class="message">Connecté en tant que <a class="name" href="/client/profile">NOM Prénom</a></span>
   <a class="logout" href="/client/auth">Déconnection</a>
 </div>
       <?php } ?>
-    
-		<!-- TODO -->
     <nav><?php
     if (isset($nav)):
     foreach ($nav as $link => $n): ?>
@@ -39,11 +37,12 @@
     <?php
     endforeach;
     endif; ?></nav>
-    
+      </header>
+
     <div id="content">
       <?php echo $layoutContent ?>
     </div>
-    <div class="separator"></div>
+  </div>
     <footer>
       par Gaetan Renaudeau et Nicolae Namolovan
       <?php if (DEBUG): ?>
@@ -54,6 +53,5 @@
       </div>
       <?php endif; ?>
     </footer>
-  </div>
 </body>
 </html>

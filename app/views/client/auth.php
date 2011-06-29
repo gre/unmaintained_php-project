@@ -11,7 +11,9 @@ $this->setLayoutVar('nav', array("/client/auth" => "Connexion client"));
 
 <div class="half">
   <h2>S'authentifier</h2>
-  <form action="/client/auth" method="post">
+  <form class="auth" action="/client/auth" method="post">
+    <fieldset>
+      <legend>Authentification</legend>
     <p>
       <label for="identifiant">Identifiant</label>
       <input id="identifiant" type="text" name="login" />
@@ -23,6 +25,7 @@ $this->setLayoutVar('nav', array("/client/auth" => "Connexion client"));
     <p class="buttons">
       <button type="submit">Se connecter</button>
     </p>
+    </fieldset>
   </form>
 </div>
 <div class="half">

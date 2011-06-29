@@ -8,7 +8,9 @@ Erreur, vérifier les données dans les champs.
 </div>
 <?php endif;?>
 
-  <form action="/client/inscription" method="post">
+  <form class="inscription" action="/client/inscription" method="post">
+    <fieldset>
+      <legend>Inscription</legend>
     <p>
       <label for="identifiant">Identifiant</label>
       <input id="login" type="text" name="login" value="<?php e(@$name)?>"/>
@@ -45,4 +47,5 @@ Erreur, vérifier les données dans les champs.
     <p class="buttons">
       <button type="submit">S'inscrire</button>
     </p>
+    </fieldset>
   </form>

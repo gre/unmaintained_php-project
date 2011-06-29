@@ -7,7 +7,7 @@ $this->setLayoutVar('nav', array("/ingenieur/index" => "Sessions"));
 
 <h1>Les sessions</h1>
 
-<h1>Sessions en cours ou à venir</h1>
+<h2>Sessions en cours ou à venir</h2>
 <table>
   <thead>
     <tr>
@@ -39,7 +39,7 @@ $this->setLayoutVar('nav', array("/ingenieur/index" => "Sessions"));
   </tbody>
 </table>
 
-<h1>Sessions passées</h1>
+<h2>Sessions passées</h2>
 
 <table>
   <thead>
