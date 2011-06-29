@@ -2,7 +2,6 @@
 
 class AdminController extends AppController
 {
-  protected $_model = 'client';
   // protected $layout = 'admin';
   
   public function _isAdmin() {
@@ -24,8 +23,10 @@ class AdminController extends AppController
   public function actionAuth()
   {
     if ($this->_isPost) {
-      $_SESSION['isAdmin'] = 1;
-      $this->redirect('/admin/index');
+      if (AdminModel::login($this->post['login'])) {
+        $user = AdminModel::getByLogin($this->post['login']);
+        self::setAuthentified($user,'admin');
+      }
       die();
     }
     $this->loadView('admin/auth');

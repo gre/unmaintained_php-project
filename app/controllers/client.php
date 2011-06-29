@@ -26,6 +26,7 @@ class ClientController extends AppController
     if (ClientModel::login($this->post['login'],$this->post['password'])) {
         $user = ClientModel::getByLogin($this->post['login']);
         $_SESSION['user'] = $user['code_client'];
+        $_SESSION['user_type'] = 'client';
         $this->redirect("/session/index");
         die();
     }

@@ -1,6 +1,6 @@
 <?php
 
-class ClientModel extends AppModel {    
+class ClientModel extends AppModel {
   static function register($data)
   {
     $codeClient = self::generateNewCodeClient($data['name'],$data['code_departement']);
@@ -30,16 +30,12 @@ class ClientModel extends AppModel {
   
   static function getByLogin($login)
   {
-    $result = self::query('SELECT * FROM Client WHERE identclient=$1',$login);
-    if (pg_num_rows($result) == 0) return false;
-    return pg_fetch_assoc($result);
+    return self::fetchFirst(self::query('SELECT * FROM Client WHERE identclient=$1',$login));
   }
   
-  static function getByCodeClient($codeClient)
+  static function getById($codeClient)
   {
-    $result = self::query('SELECT * FROM Client WHERE code_client=$1',$codeClient);
-    if (pg_num_rows($result) == 0) return false;
-    return pg_fetch_assoc($result);
+    return self::fetchFirst(self::query('SELECT * FROM Client WHERE code_client=$1',$codeClient));
   }
   
   static function getUsersForConfirmation()
@@ -60,7 +56,7 @@ class ClientModel extends AppModel {
    **/
   static function setConfirm($codeClient,$confirm)
   {
-    $user = self::getByCodeClient($codeClient);
+    $user = self::getById($codeClient);
     if (!$user) return false;
     $confirm = ($confirm?'TRUE':'FALSE');
     

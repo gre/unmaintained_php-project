@@ -7,8 +7,7 @@ class AppController extends Lvc_PageController
 	protected $isPost = false;
     // protected $_model to load; from models/NAME.php, example protected $_model =
 	
-	protected function beforeAction()
-	{
+	protected function beforeAction() {
 	  $this->setLayoutVar('pageTitle', 'Untitled');
 	  $this->requireCss('reset.css');
 	  $this->requireCss('master.css');
@@ -26,14 +25,35 @@ class AppController extends Lvc_PageController
 	  	
 	  $this->_loadRequiredModels();
           
-      /**
-      * Logged for view Layout
-      */
-      $this->setLayoutVar('connected',$this->isLogged());
-	}
+          /**
+          * Logged for view Layout
+          */
+          $this->setLayoutVar('connected',$this->isLogged());
+          
+          if ($this->isLogged()) {
+            $this->setLayoutVar('',$this->isLogged());
+            //ClientModel::getByLogin($this->post['login']);
+          }
+          
+        }
 	
         protected function isLogged() {
             return isset($_SESSION['user']);
+        }
+        
+        protected function getLoggedUser() {
+          if (!isLogged()) return false;
+          
+          $id = $_SESSION['user'];
+          
+          switch($_SESSION['user_type']) {
+            case 'client':
+              return ClientModel::getById($id);
+            case 'client':
+              return ClientModel::getById($id);
+            case 'admin':
+              return AdminModel::getById($id);
+          }
         }
         
         protected function requireLogin() {
