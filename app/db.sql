@@ -87,10 +87,11 @@ CREATE TABLE Participant (
 
 
 
+
 CREATE LANGUAGE plpgsql;
 create or replace function incrementParticipant() returns trigger as $$
 begin
-    UPDATE Session SET nb_part_ins=nb_part_ins+1 WHERE nom_c=NEW.nom_c;
+    UPDATE Session SET nb_part_ins=nb_part_ins+1 WHERE nom_c=NEW.nom_c AND date_deb_ses=NEW.date_deb_ses;
     return NEW;
 end;
 $$ LANGUAGE plpgsql;
@@ -101,7 +102,7 @@ after insert on Participant for each row execute procedure incrementParticipant(
 create or replace function decrementParticipant() returns trigger as $$
 begin
 
-UPDATE Session SET nb_part_ins=nb_part_ins-1 WHERE nom_c=OLD.nom_c;
+UPDATE Session SET nb_part_ins=nb_part_ins-1 WHERE nom_c=OLD.nom_c AND date_deb_ses=OLD.date_deb_ses;
     return OLD;
 end;
 $$ LANGUAGE plpgsql;
