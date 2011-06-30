@@ -27,16 +27,12 @@ $this->setLayoutVar('nav', array("/client/auth" => "Connexion client", "" => "S'
       <input id="adresse" type="text" name="adresse" value="<?php e(@$adresse)?>" />
     </p>
     <p>
-      <label for="password">Code postale</label>
+      <label for="password">Code postal</label>
       <input id="postal_code" type="text" name="postal_code" value="<?php e(@$postal_code)?>" />
     </p>
     <p>
       <label for="password">Ville</label>
       <input id="city" type="text" name="city" value="<?php e(@$city)?>" />
-    </p>
-    <p>
-      <label for="password">Code departement</label>
-      <input id="code_departement" type="text" name="code_departement" value="<?php e(@$code_departement)?>" />
     </p>
 
     <p class="buttons">

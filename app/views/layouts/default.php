@@ -46,7 +46,6 @@
 <?php e($error) ?>
 </div>
 <?php endif;?>
-      
       <?php echo $layoutContent ?>
     </div>
   </div>

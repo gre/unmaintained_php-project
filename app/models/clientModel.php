@@ -3,11 +3,13 @@
 class ClientModel extends AppModel {
   static function register($data)
   {
-    $codeClient = self::generateNewCodeClient($data['name'],$data['code_departement']);
-    $adresse = $data['adresse'].', '.$data['code_departement'].', '.$data['postal_code'].' '.$data['city'];
+  	$code_departement = substr($data['postal_code'],0,2);
+    $codeClient = self::generateNewCodeClient($data['name'],$code_departement);
+    $adresse = $data['adresse'].', '.$data['postal_code'].' '.$data['city'];
     $result = self::query("INSERT INTO Client (code_client,nom_client,adresse_cl,raison_sociale,identclient,mpclient)
                  VALUES ($1,$2,$3,$4,$5,$6)",
                  array($codeClient,$data['name'],$adresse,$data['raison_sociale'],$data['login'],sha1($data['password'])));
+    if (!$result) return $result;
     return $codeClient;
   }
   static function generateNewCodeClient($name,$code_departement,$duplicate=0) 

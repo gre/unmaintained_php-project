@@ -40,8 +40,8 @@ if (isset($_GET['url']) && $_GET['url'] === 'favicon.ico') {
 }
 
 function __autoload($class_name) {
-	if (strpos($class_name,"Model") !== false) {
-		$file = APP_PATH.'models/'.$class_name.'.php';
+	if (stripos($class_name,"Model") !== false) {
+		$file = APP_PATH.'models/'.lcfirst($class_name).'.php';
 		if (!file_exists($file)) {
 		    new Lvc_Exception("Autoloat failed ".$file." not found");
 		}

@@ -18,8 +18,12 @@ class ClientController extends AppController
       $this->loadView('client/auth');
       return;
     }
+    
     if (!ClientModel::isConfirmed($this->post['login'])) {
-        $this->setLayoutVar('error',"Erreur, l'utilisateur n'été pas confirmé.");
+    	$this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
+    }
+    if (!ClientModel::isConfirmed($this->post['login'])) {
+        $this->setLayoutVar('error',"Erreur, l'utilisateur n'est pas confirmé.");
         $this->render();
         die();
     }
@@ -30,7 +34,7 @@ class ClientController extends AppController
         die();
     }
     $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
-    $this->loadView('client/auth');
+    $this->render();
   }
   public function actionInscription()
   {
@@ -38,8 +42,17 @@ class ClientController extends AppController
       $this->loadView('client/inscription');
       return;
     }
-    $codeClient = ClientModel::register($this->post);
-    if (!$codeClient) {
+    $error = false;
+    $codeClient = null;
+    // Validation
+    if (strlen($this->post['postal_code']) != 5 || !is_numeric($this->post['postal_code'])) {
+    	$error = true;
+    }
+	
+	if (!$error) 
+    	$codeClient = ClientModel::register($this->post);
+    
+    if (!$codeClient || $error) {
         $this->setLayoutVar('error',"Erreur, vérifier les données dans les champs.");
         $this->setVars($this->post);
         $this->loadView('client/inscription');
