@@ -4,8 +4,8 @@ $this->setLayoutVar('nav', array("/client/index" => "Sessions", "/session/view?n
 $this->setLayoutVar('connected', true);
 ?>
 
-
 <h2>Confirmer l'inscription des nouveau participants</h2>
+<?php if (count($participants)): ?>
 <form method="POST" action="/session/addParticipants">
 <input type="hidden" name="nom_c" value="<?php echo $session['nom_c']?>"/>
 <input type="hidden" name="date_deb_ses" value="<?php echo $session['date_deb_ses']?>"/>
@@ -24,3 +24,6 @@ Prix TTC:
   <p class="buttons">
     <button type="submit">Confirmer</button>
   </p>
+<?php else: ?>
+<p class="noItems">aucun participant</p>
+<?php endif; ?>
