@@ -17,15 +17,15 @@ $this->setLayoutVar('connected', true);
   </thead>
   <tbody>
     <tr>
-      <td><a href="/ingenieur/session/2">CSS3</a></td>
-      <td>03/07/2011</td>
-      <td>06/07/2011</td>
-      <td><a href="/ingenieur/session/2">18 / 50 places occupées</a></td>
+      <td><?php e($session['nom_c'])?></td>
+      <td><?php e($session['date_deb_ses'])?></td>
+      <td><?php e($session['date_fin_ses'])?></td>
+      <td><?php e($session['nb_part_ins'].' / '.$session['nb_max_part'])?> places occupées</td>
     </tr>
   </tbody>
 </table>
 
-<h2>Liste des participants (18)</h2>
+<h2>Liste des participants (<?php echo count($participants)?>)</h2>
 <table>
   <thead>
     <th>Client</th>
@@ -33,54 +33,12 @@ $this->setLayoutVar('connected', true);
     <th>Date d'inscription</th>
   </thead>
   <tbody>
+  <?php foreach($participants AS $participant): ?>
     <tr>
-      <td>Microfrost</td>
-      <td>Big Dates</td>
-      <td>05/05/2011</td>
+      <td><?php e($participant['nom_client'])?></td>
+      <td><?php e($participant['nom_part'])?></td>
+      <td><?php e(date("Y-m-d H:i",strtotime($participant['date_inscrpt']))) ?></td>
     </tr>
-    <tr>
-      <td>Microfrost</td>
-      <td>Steven John</td>
-      <td>05/05/2011</td>
-    </tr>
-    <tr>
-      <td>Microfrost</td>
-      <td>Jack Stones</td>
-      <td>05/05/2011</td>
-    </tr>
-    <tr>
-      <td>Microfrost</td>
-      <td>John John</td>
-      <td>05/05/2011</td>
-    </tr>
-    
-    <tr>
-      <td>Appeal</td>
-      <td>Steve Works</td>
-      <td>03/05/2011</td>
-    </tr>
-    <tr>
-      <td>Appeal</td>
-      <td>Toto titi</td>
-      <td>08/05/2011</td>
-    </tr>
-    <tr>
-      <td>Appeal</td>
-      <td>Tata titi</td>
-      <td>08/05/2011</td>
-    </tr>
-    <tr>
-      <td>Appeal</td>
-      <td>Toto tutu</td>
-      <td>08/05/2011</td>
-    </tr>
-    <tr>
-      <td>Appeal</td>
-      <td>Tonton titi</td>
-      <td>10/05/2011</td>
-    </tr>
-    <tr>
-      <td colspan="3">etc...</td>
-    </tr>
+  <?php endforeach;?>
   </tbody>
 </table>

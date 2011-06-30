@@ -4,11 +4,22 @@ class IngenieurController extends AppController
 {
   //protected $layout = 'ingenieur';
   public function actionIndex()
-  {
+  {    
+    $all = SessionModel::getAll();
+    $passed = SessionModel::getAllPassed();
+    
+    $this->setVar('sessions_futur',$all);
+    $this->setVar('sessions_passed',$passed);
     $this->loadView('ingenieur/index');
   }
   public function actionSession()
   {
+    $session = SessionModel::getSession($this->get['nom_c'],$this->get['date_deb_ses']);
+    $participants = ParticipantModel::getBySession($this->get['nom_c'],$this->get['date_deb_ses']);
+    
+    $this->setVar('participants',$participants);
+    $this->setVar('session',$session);
+    
     $this->loadView('ingenieur/session');
   }
   public function actionAuth()

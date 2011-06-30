@@ -18,24 +18,15 @@ $this->setLayoutVar('nav', array("/ingenieur/index" => "Sessions"));
     </tr>
   </thead>
   <tbody>
+    <?php foreach($sessions_futur AS $session): ?>
     <tr>
-      <td><a href="/ingenieur/session/4">jQuery</a></td>
-      <td>30/06/2011</td>
-      <td>02/07/2011</td>
-      <td><a href="/ingenieur/session/4">50 / 50 places occupées</a></td>
+      <?php $url = "/ingenieur/session?nom_c={$session['nom_c']}&date_deb_ses={$session['date_deb_ses']}";?>
+      <td><a href="<?php echo $url ?>"><?php e($session['nom_c'])?></a></td>
+      <td><?php e($session['date_deb_ses'])?></td>
+      <td><?php e($session['date_fin_ses'])?></td>
+      <td><a href="<?php echo $url ?>"><?php e($session['nb_part_ins'] .' / ' . $session['nb_max_part'])?> places occupées</a></td>
     </tr>
-    <tr>
-      <td><a href="/ingenieur/session/2">CSS3</a></td>
-      <td>03/07/2011</td>
-      <td>06/07/2011</td>
-      <td><a href="/ingenieur/session/2">18 / 50 places occupées</a></td>
-    </tr>
-    <tr>
-      <td><a href="/ingenieur/session/1">HTML5</a></td>
-      <td>23/07/2011</td>
-      <td>26/07/2011</td>
-      <td><a href="/ingenieur/session/1">55 / 100 places occupées</a></td>
-    </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
 
@@ -51,15 +42,15 @@ $this->setLayoutVar('nav', array("/ingenieur/index" => "Sessions"));
     </tr>
   </thead>
   <tbody>
+    <?php foreach($sessions_passed AS $session): ?>
     <tr>
-      <td><a href="/ingenieur/session/3">WebGL</a></td>
-      <td>23/05/2011</td>
-      <td>24/05/2011</td>
-      <td>
-        50 participants sur 65 places.
-        <a href="/ingenieur/session/3">Détail</a>
-      </td>
+      <?php $url = "/ingenieur/session?nom_c={$session['nom_c']}&date_deb_ses={$session['date_deb_ses']}";?>
+      <td><a href="<?php echo $url ?>"><?php e($session['nom_c'])?></a></td>
+      <td><?php e($session['date_deb_ses'])?></td>
+      <td><?php e($session['date_fin_ses'])?></td>
+      <td><a href="<?php echo $url ?>"><?php e($session['nb_part_ins'] .' / ' . $session['nb_max_part'])?> places occupées</a></td>
     </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
 

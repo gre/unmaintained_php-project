@@ -3,7 +3,10 @@
 class ParticipantModel extends AppModel {    
   static function getBySession($nom_c, $date_deb_ses)
   {
-	  return self::fetchAll(self::query('SELECT * FROM Participant WHERE nom_c=$1 AND date_deb_ses=$2',
+	  return self::fetchAll(self::query(
+			  'SELECT Participant.*, Client.nom_client FROM Participant
+			  LEFT JOIN Client ON Participant.code_client=Client.code_client
+			  WHERE nom_c=$1 AND date_deb_ses=$2',
 	  	array($nom_c,$date_deb_ses)) );
   }
   
