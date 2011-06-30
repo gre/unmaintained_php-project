@@ -44,7 +44,7 @@ class SessionController extends AppController
         	
         	$participantAlready = ParticipantModel::getNomParticipant($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$nom_part);
         	if ($participantAlready != false) {
-        		$errors[] = $this->post['nom_part'] . " est deja inscrit";
+        		$errors[] = $nom_part . " est deja inscrit";
         	} else {
                   $participants[] = $nom_part;
                   $session_place_libre--;
@@ -56,9 +56,15 @@ class SessionController extends AppController
         $this->setVar('cours',$cours);
         $this->loadView("session/confirmation");
     }
-    public function actionAddParticipants() {
-    	$errors = array();
-        $isAdd = ParticipantModel::addParticipants($this->post['nom_c'],$this->post['date_deb_ses'],$this->post['nom_part']);
-        $this->setVar('errors',$errors);
+    public function actionaddParticipants() {
+    	$error = false;
+    	
+        $isAdded = ParticipantModel::addParticipants($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$this->post['participant']);
+        if ($isAdded !== true) {
+        	$error = "Le participant " . $isAdded . " est déjà inscrit à cette session, la transaction a été annulé";
+        }
+        $this->setVar('error',$error);
+        
+        $this->redirect("/session/view?/session/view?nom_c={$session['nom_c']}&date_deb_ses={$session['date_deb_ses']}");
     }
 }

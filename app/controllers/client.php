@@ -55,6 +55,11 @@ class ClientController extends AppController
     if (strlen($this->post['postal_code']) != 5 || !is_numeric($this->post['postal_code'])) {
     	$error = "Code postal incorrect";
     }
+    
+    if (!ClientModel::getByLogin($this->post['login'])) {
+        $this->setLayoutVar('error',"Erreur, cet identifiant est déjà utilisé.");
+        $this->render();
+    }
 	
 	if ($error == false) 
     	$codeClient = ClientModel::register($this->post);
