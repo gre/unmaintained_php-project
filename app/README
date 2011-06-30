@@ -1,0 +1,17 @@
+GASS - Gestion des Activites d'une Societe de Service
+micro projet d'universite de Gaetan Renaudeau et Nicolae Namolovan
+
+Requis :
+ - Base de donnee postgres
+ - PHP avec les modules postgres
+ - Apache
+
+Configuration :
+
+- Configurer apache pour qu'il accepte les .htaccess ( AllowOverride All )
+- Configurer apache pour que la racine localhost:2000 soit sur le dossier
+  app/webroot/
+- Creer un fichier app/config/credentials.php a partir du *.example pour la
+  configuration specifique a votre machine (identifiant postgres, etc.)
+- Initialiser votre base de donnee postgres avec db.sql et data.sql
+- C'est pret! Allez sur votre navigateur http://localhost:{port_apache}/
