@@ -43,7 +43,12 @@
       
 <?php if (isset($error)): ?>
 <div class="error">
-<?php e($error) ?>
+<?php if (!is_array($error)): ?>
+<?php $error = array($error) ?>
+<?php endif; ?>
+<?php foreach($error AS $err): ?>
+<?php e($err) ?><br/>
+<?php endforeach; ?>
 </div>
 <?php endif;?>
       <?php echo $layoutContent ?>

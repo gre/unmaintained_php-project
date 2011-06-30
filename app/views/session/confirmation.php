@@ -1,6 +1,6 @@
 <?php
 $this->setLayoutVar('pageTitle', 'Session '.$session['nom_c'].' : Nouveau participants');
-$this->setLayoutVar('nav', array("/client/index" => "Sessions", "" => $session['nom_c'].' : Nouveau participants'));
+$this->setLayoutVar('nav', array("/client/index" => "Sessions", "/session/view?nom_c={$session['nom_c']}&date_deb_ses={$session['date_deb_ses']}" => $session['nom_c'].' : Nouveau participants'));
 $this->setLayoutVar('connected', true);
 ?>
 

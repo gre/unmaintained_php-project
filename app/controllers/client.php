@@ -19,13 +19,13 @@ class ClientController extends AppController
       return;
     }
     
-    if (!ClientModel::isConfirmed($this->post['login'])) {
-    	$this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
+    if (!ClientModel::getByLogin($this->post['login'])) {
+    	$this->setLayoutVar('error',"Erreur, l'identifiant est incorrect.");
+    	$this->render();
     }
     if (!ClientModel::isConfirmed($this->post['login'])) {
         $this->setLayoutVar('error',"Erreur, l'utilisateur n'est pas confirmé.");
         $this->render();
-        die();
     }
     if (ClientModel::login($this->post['login'],$this->post['password'])) {
         $user = ClientModel::getByLogin($this->post['login']);
@@ -44,16 +44,23 @@ class ClientController extends AppController
     }
     $error = false;
     $codeClient = null;
+    
+    // Tout les champs sont requis
+    foreach($this->post AS $post_element) {
+    	if (empty($post_element))
+    		$error = true;
+    }
+    
     // Validation
     if (strlen($this->post['postal_code']) != 5 || !is_numeric($this->post['postal_code'])) {
-    	$error = true;
+    	$error = "Code postal incorrect";
     }
 	
-	if (!$error) 
+	if ($error == false) 
     	$codeClient = ClientModel::register($this->post);
     
     if (!$codeClient || $error) {
-        $this->setLayoutVar('error',"Erreur, vérifier les données dans les champs.");
+        $this->setLayoutVar('error',($error===true?"Erreur, vérifier les données dans les champs.":$error));
         $this->setVars($this->post);
         $this->loadView('client/inscription');
         return;

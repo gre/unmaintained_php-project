@@ -20,7 +20,7 @@ $this->setLayoutVar('connected', true);
       <td><?php e($session['nom_c'])?></td>
       <td><?php e($session['date_deb_ses'])?></td>
       <td><?php e($session['date_fin_ses'])?></td>
-      <td><?php e($session['nb_part_ins'])?> places</td>
+      <td><?php e($session['nb_max_part']-$session['nb_part_ins'])?> places</td>
     </tr>
   </tbody>
 </table>

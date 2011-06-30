@@ -33,14 +33,24 @@ class SessionController extends AppController
         $participants = array();
         $session = SessionModel::getSession($this->post['nom_c'], $this->post['date_deb_ses']);
         $cours = CoursModel::getById($session['nom_c']);
+        
+        $session_place_libre = $session['nb_max_part']-$session['nb_part_ins'];
+        
         foreach($this->post['nom_part'] AS $nom_part) {
+        	if ($session_place_libre == 0) {
+        		$errors[] = "Il n'y a plus d'espace pour " . $nom_part;
+        		continue;
+        	}
+        	
         	$participantAlready = ParticipantModel::getNomParticipant($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$nom_part);
         	if ($participantAlready != false) {
         		$errors[] = $this->post['nom_part'] . " est deja inscrit";
-        	} else
+        	} else {
                   $participants[] = $nom_part;
+                  $session_place_libre--;
+             }
         }
-        $this->setVar('errors',$errors);
+        $this->setLayoutVar('error',$errors);
         $this->setVar('participants',$participants);
         $this->setVar('session',$session);
         $this->setVar('cours',$cours);
