@@ -24,7 +24,6 @@ class ParticipantModel extends AppModel {
 			self::query("ROLLBACK");
 			return $nom_part;
   		}
-  		echo "$code_client,$nom_c,$date_deb_ses,$nom_part";die();
 		self::query('INSERT INTO Participant (code_client,nom_c,date_deb_ses,nom_part,date_inscrpt)
   			VALUES ($1,$2,$3,$4,NOW())', array($code_client,$nom_c,$date_deb_ses,$nom_part) );
   		
@@ -38,9 +37,9 @@ class ParticipantModel extends AppModel {
   }
   static function deleteParticipant($code_client, $nom_c, $date_deb_ses, $nom_part) {
     self::query("START TRANSACTION");
-  	$cours = CoursModel::getById();
+  	$cours = CoursModel::getById($nom_c);
   	
-  	if (getNomParticipant($code_client, $nom_c, $date_deb_ses, $nom_part) == false) {
+  	if (self::getNomParticipant($code_client, $nom_c, $date_deb_ses, $nom_part) == false) {
   		self::query("ROLLBACK");
   		return false;
   	}

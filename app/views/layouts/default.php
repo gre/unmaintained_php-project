@@ -41,7 +41,7 @@
 
     <div id="content">
       
-<?php if (isset($error)): ?>
+<?php if (isset($error) && !empty($error)): ?>
 <div class="error">
 <?php if (!is_array($error)): ?>
 <?php $error = array($error) ?>

@@ -65,6 +65,16 @@ class SessionController extends AppController
         }
         $this->setVar('error',$error);
         
-        $this->redirect("/session/view?/session/view?nom_c={$session['nom_c']}&date_deb_ses={$session['date_deb_ses']}");
+        $this->redirect("/session/view?nom_c={$this->post['nom_c']}&date_deb_ses={$this->post['date_deb_ses']}");
+        
+        die();
+    }
+    
+    public function actionDelete() {
+    	ParticipantModel::deleteParticipant($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$this->post['nom_part']);
+    	
+    	$this->redirect("/session/view?nom_c={$this->post['nom_c']}&date_deb_ses={$this->post['date_deb_ses']}");
+    	
+    	die();
     }
 }

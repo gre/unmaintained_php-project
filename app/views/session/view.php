@@ -31,6 +31,10 @@ $this->setLayoutVar('connected', true);
 <p>Aucun de vos participants.</p>
 <?php else: ?>
 
+<form method="POST" action="/session/delete">
+<input type="hidden" name="nom_c" value="<?php echo $session['nom_c']?>"/>
+<input type="hidden" name="date_deb_ses" value="<?php echo $session['date_deb_ses']?>"/>
+
 <table>
   <thead>
     <th>Nom du participant</th>
@@ -44,12 +48,14 @@ $this->setLayoutVar('connected', true);
       <td><?php e($participant['date_inscrpt']) ?></td>
       <td>
         <button type="button" disabled="disabled">Modifier</button>
-        <button type="button" onclick="confirm('Annuler l\'inscription de <?php e($participant['nom_part']) ?> ?')">Supprimer</button>
+        <button type="submit" name="nom_part" value="<?php e($participant['nom_part']) ?>" onclick="return confirm('Annuler l\'inscription de <?php e($participant['nom_part']) ?> ?')">Supprimer</button>
       </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
+
+</form>
 
 <?php endif; ?>
 
