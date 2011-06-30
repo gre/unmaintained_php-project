@@ -221,26 +221,27 @@ footer {
 }
 
 table {
-border: medium solid #B3959F;
+    -moz-box-shadow: 0px 1px 8px rgba(0,0,0,0.3);
+    border: 1px solid #bbb;
 border-collapse: collapse;
 width: 100%;
 font-family: monospace;
 }
 th {
 font-weight: bold;
-border: thin solid #B3959F;
+border: thin solid #999;
 padding: 5px;
-background-color: #EAD3DD;
+background-color: #cde;
 text-align: center;
 }
 td {
-border: thin solid #B3959F;
+border: thin solid #999;
 padding: 5px;
 text-align: center;
 background-color: #ffffff;
 }
 tr:nth-child(odd) td {
-  background-color: #FAEFF4;
+  background-color: #eef3f9;
 }
 
 footer {
