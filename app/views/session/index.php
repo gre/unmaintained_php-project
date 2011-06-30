@@ -3,6 +3,16 @@ $this->setLayoutVar('pageTitle', 'Sessions');
 $this->setLayoutVar('nav', array("/session/index" => "Sessions"));
 ?>
 
+<h1>Les sessions</h1>
+
+<h2>Prochaines sessions</h2>
+
+<?php if(count($sessions)==0) : ?>
+
+<p class="noItems">Aucune</p>
+
+<?php else : ?>
+
 <table>
   <thead>
     <tr>
@@ -23,3 +33,5 @@ $this->setLayoutVar('nav', array("/session/index" => "Sessions"));
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<?php endif; ?>

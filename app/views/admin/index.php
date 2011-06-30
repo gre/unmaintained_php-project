@@ -63,8 +63,8 @@ $this->setLayoutVar('nav', array("" => "Administration"));
       <div class="traitement">
 		<form method="POST" action="/admin/clientStatus">
         <input type="hidden" name="clientId" value="<?php e($user['code_client'])?>" />
-        <button name="action" value="valid" type="submit">Valider</button> 
-        <button name="action" value="refuse" type="submit">Refuser</button>
+        <button class="valid" name="action" value="valid" type="submit">Valider</button> 
+        <button class="refuse" name="action" value="refuse" type="submit">Refuser</button>
         </form> 
       </div>
       </td>
