@@ -65,7 +65,6 @@ $this->setLayoutVar('nav', array("" => "Administration"));
   </tbody>
 </table>
 
-<todo>Une pagination ici</todo>
 <script type="text/javascript">
 $(function(){
 	$('.changeConfirmation').click(function() {

@@ -1,6 +1,6 @@
 <?php
 
-class AppController extends Lvc_PageController
+  class AppController extends Lvc_PageController
 {
 	protected $layout = 'default';
 	protected $dbconn;
@@ -31,29 +31,61 @@ class AppController extends Lvc_PageController
           $this->setLayoutVar('connected',$this->isLogged());
           
           if ($this->isLogged()) {
-            $this->setLayoutVar('',$this->isLogged());
-            //ClientModel::getByLogin($this->post['login']);
+            $this->setLayoutVar('full_name',$this->getFullName());
           }
           
+          // Jobs
+          // include(APP_PATH . 'jobs/importdb.php');
         }
 	
+        protected function getFullName() {
+          return $this->userSpecificCall("getFullName",$this->getLoggedUserId());
+        }
+        
+        protected function userSpecificCall($method,$arg1) {
+          switch($_SESSION['user_type']) {
+            case 'client':
+              return ClientModel::$method($arg1);
+            case 'ingenieur':
+              return IngenieurModel::$method($arg1);
+            case 'admin':
+              return AdminModel::$method($arg1);
+          }
+        }
+        
         protected function isLogged() {
             return isset($_SESSION['user']);
         }
         
+        protected function getLoggedUserId() {
+          return $_SESSION['user'];
+        }
+        
+        protected function getUserType() {
+          return $_SESSION['user_type'];
+        }        
+        
         protected function getLoggedUser() {
           if (!isLogged()) return false;
           
-          $id = $_SESSION['user'];
+          $id = $this->getLoggedUserId();
           
-          switch($_SESSION['user_type']) {
-            case 'client':
-              return ClientModel::getById($id);
-            case 'client':
-              return ClientModel::getById($id);
-            case 'admin':
-              return AdminModel::getById($id);
-          }
+          return $this->userSpecificCall("getById",$id);
+        }
+        
+        protected function setAuthentified($user_id,$user_type) {
+          $_SESSION['user'] = $user_id;
+          $_SESSION['user_type'] = $user_type;
+        }
+        
+        protected function logout() {
+          session_destroy();
+        }
+        
+        public function actionLogout() {
+          $this->logout();
+          $this->redirect("/");
+          die();
         }
         
         protected function requireLogin() {
@@ -88,7 +120,8 @@ class AppController extends Lvc_PageController
 	{
 		$this->layoutVars['requiredJs'][$jsFile] = true;
 	}
-	
+
+        
     public function render() {
         $this->loadView($this->getControllerName().'/'.$this->getActionName());
         exit();

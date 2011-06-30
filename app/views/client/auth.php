@@ -3,12 +3,6 @@ $this->setLayoutVar('pageTitle', 'Client - Authentification');
 $this->setLayoutVar('nav', array("/client/auth" => "Connexion client"));
 ?>
 
-<?php if (isset($error)): ?>
-<div class="error">
-<?php e($error) ?>
-</div>
-<?php endif;?>
-
 <div class="half">
   <h2>S'authentifier</h2>
   <form class="auth" action="/client/auth" method="post">

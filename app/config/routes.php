@@ -6,10 +6,7 @@ $regexRoutes = array(
 	// Map nothing to the home page.
 	'#^$#' => array(
 		'controller' => 'page',
-		'action' => 'view',
-		'action_params' => array(
-			'page_name' => 'home',
-		),
+		'action' => 'home'
 	),
 	
 	// Allow direct access to all pages via a "/page/page_name" URL.
@@ -19,6 +16,12 @@ $regexRoutes = array(
 		'action_params' => array(
 			'page_name' => 1,
 		),
+	),
+        
+	// Allow direct access to all pages via a "/page/page_name" URL.
+	'#^logout$#' => array(
+		'controller' => 'page',
+		'action' => 'logout'
 	),
 	
 	// Map controler/action/params

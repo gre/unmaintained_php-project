@@ -7,6 +7,14 @@ class ParticipantModel extends AppModel {
 	  	array($nom_c,$date_deb_ses)) );
   }
   
+  static function getNomParticipant($code_client, $nom_c, $date_deb_ses, $nom_part) {
+    return self::fetchFirst(self::query(
+					"SELECT *
+					FROM Participant
+					WHERE code_client=$1 AND nom_c=$2 AND date_deb_ses=$3 AND nom_part=$4",
+		array($code_client, $nom_c, $date_deb_ses, $nom_part)));
+  }
+  
   static function add($code_client, $nom_c, $date_deb_ses, $nom_part) {
   	// TODO Check limits
   	// TODO transaction 

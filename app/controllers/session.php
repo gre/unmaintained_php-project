@@ -28,15 +28,27 @@ class SessionController extends AppController
         $this->render();
     }
     
-    public function actionAddParticipant() {
-    	$errors = array(); 
+    public function actionAskAddParticipants() {
+    	$errors = array();
+        $participants = array();
+        $session = SessionModel::getSession($this->post['nom_c'], $this->post['date_deb_ses']);
+        $cours = CoursModel::getById($session['nom_c']);
         foreach($this->post['nom_part'] AS $nom_part) {
-        	$isAdd = ParticipantModel::add($this->post['nom_c'],$this->post['date_deb_ses'],$this->post['nom_part']);
-        	if ($isAdd != true) {
-        		$errors[] = $this->post['nom_part'] . " n'été pas ajouté a cause de: " . $isAdd;
-        	}
+        	$participantAlready = ParticipantModel::getNomParticipant($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$nom_part);
+        	if ($participantAlready != false) {
+        		$errors[] = $this->post['nom_part'] . " est deja inscrit";
+        	} else
+                  $participants[] = $nom_part;
         }
         $this->setVar('errors',$errors);
-        
+        $this->setVar('participants',$participants);
+        $this->setVar('session',$session);
+        $this->setVar('cours',$cours);
+        $this->loadView("session/confirmation");
+    }
+    public function actionAddParticipants() {
+    	$errors = array();
+        $isAdd = ParticipantModel::addParticipants($this->post['nom_c'],$this->post['date_deb_ses'],$this->post['nom_part']);
+        $this->setVar('errors',$errors);
     }
 }

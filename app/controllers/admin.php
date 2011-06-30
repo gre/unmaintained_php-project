@@ -5,7 +5,7 @@ class AdminController extends AppController
   // protected $layout = 'admin';
   
   public function _isAdmin() {
-    return isset($_SESSION['isAdmin']);
+    return $this->isLogged() && $this->getUserType() == "admin";
   }
   public function _requireAdmin() {
     if (!$this->_isAdmin()) {
@@ -23,13 +23,15 @@ class AdminController extends AppController
   public function actionAuth()
   {
     if ($this->_isPost) {
-      if (AdminModel::login($this->post['login'])) {
+      if (AdminModel::login($this->post['login'],$this->post['password'])) {
         $user = AdminModel::getByLogin($this->post['login']);
-        self::setAuthentified($user,'admin');
+        self::setAuthentified($user['no_admin'],'admin');
+        $this->redirect("/admin/index");
+        die();
+      } else {
+        $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
       }
-      die();
     }
-    $this->loadView('admin/auth');
   }
   
   public function actionClientStatus() {

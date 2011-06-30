@@ -17,4 +17,9 @@ class IngenieurModel extends AppModel {
   {
     return self::fetchFirst(self::query('SELECT * FROM Ingenieur WHERE login=$1',$login));
   }
+  
+  static function getFullName($id) {
+    $user = self::getById($id);
+    return $user["nom_ing"];
+  }
 }

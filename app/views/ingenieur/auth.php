@@ -3,7 +3,7 @@ $this->setLayoutVar('pageTitle', 'Ingénieur - Authentification');
 $this->setLayoutVar('nav', array("/ingenieur/auth" => "Connexion ingénieur"));
 ?>
 
-<form class="auth" action="/ingenieur">
+<form class="auth" action="/ingenieur/auth" method="POST">
   <fieldset>
     <legend>Authentification</legend>
   <p>

@@ -38,6 +38,11 @@ class ClientModel extends AppModel {
     return self::fetchFirst(self::query('SELECT * FROM Client WHERE code_client=$1',$codeClient));
   }
   
+  static function getFullName($user_id) {
+    $user = self::getById($user_id);
+    return $user["nom_client"];
+  }
+  
   static function getUsersForConfirmation()
   {
     $query = self::query('SELECT * FROM Client WHERE confirme IS NULL');

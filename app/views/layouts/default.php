@@ -26,8 +26,8 @@
       <a class="title" href="/" title="Gestion des Activités de la Société de Service">GASS</a>
       <?php if($connected) { ?>
 <div id="loginInfos">
-  <span class="message">Connecté en tant que <a class="name" href="/client/profile">NOM Prénom</a></span>
-  <a class="logout" href="/client/auth">Déconnection</a>
+  <span class="message">Connecté en tant que <?php echo $full_name?></span>
+  <a class="logout" href="/logout">Déconnection</a>
 </div>
       <?php } ?>
     <nav><?php
@@ -40,6 +40,13 @@
       </header>
 
     <div id="content">
+      
+<?php if (isset($error)): ?>
+<div class="error">
+<?php e($error) ?>
+</div>
+<?php endif;?>
+      
       <?php echo $layoutContent ?>
     </div>
   </div>

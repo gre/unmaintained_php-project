@@ -58,7 +58,7 @@ $this->setLayoutVar('connected', true);
 <?php else: ?>
 <p>Il n'y a plus de place pour cette session.</p>
 <?php endif; ?>
-<form method="POST" action="/session/newParticipant">
+<form method="POST" action="/session/askAddParticipants">
 <input type="hidden" name="nom_c" value="<?php echo $session['nom_c']?>"/>
 <input type="hidden" name="date_deb_ses" value="<?php echo $session['date_deb_ses']?>"/>
 <div class="participants">

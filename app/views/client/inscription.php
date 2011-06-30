@@ -2,11 +2,6 @@
 $this->setLayoutVar('pageTitle', "S'inscrire");
 $this->setLayoutVar('nav', array("/client/auth" => "Connexion client", "" => "S'inscrire"));
 ?>
-<?php if (isset($error)): ?>
-<div class="error">
-Erreur, vérifier les données dans les champs.
-</div>
-<?php endif;?>
 
   <form class="inscription" action="/client/inscription" method="post">
     <fieldset>
