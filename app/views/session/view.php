@@ -60,7 +60,7 @@ $this->setLayoutVar('connected', true);
 
 <?php endif; ?>
 
-<h2>Nouveau participant</h2>
+<h2>Nouveaux participants</h2>
 <?php if ($session['nb_max_part'] >= $session['nb_part_ins']): ?>
 <?php else: ?>
 <p>Il n'y a plus de place pour cette session.</p>
@@ -76,7 +76,7 @@ $this->setLayoutVar('connected', true);
 </div>
   <p><a href="#" id="moreParticipant">Ajouter une autre participant</a></p>
   <p class="buttons">
-    <button type="submit">Inscrire</button>
+    <button type="submit" class="big">Inscrire</button>
   </p>
 </form>
 <form method="POST" action="/session/updateParticipant" id="updateParticipant">

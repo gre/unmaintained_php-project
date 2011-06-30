@@ -10,19 +10,29 @@ $this->setLayoutVar('connected', true);
 <input type="hidden" name="nom_c" value="<?php echo $session['nom_c']?>"/>
 <input type="hidden" name="date_deb_ses" value="<?php echo $session['date_deb_ses']?>"/>
 
-<?php
-foreach($participants AS $participant): ?>
-<input type="hidden" name="participant[]" value="<?php e($participant)?>"/>
-<?php e($participant)?><br/>
+<ul>
+<?php foreach($participants AS $participant): ?>
+  <li>
+  <input type="hidden" name="participant[]" value="<?php e($participant)?>"/>
+  <?php e($participant)?>
+  </li>
 <?php endforeach; ?>
+</ul>
+
 <h2>Les coûts</h2>
-Prix HT:
-<?php echo $cours['prix_c_ht'] * count($participants); ?> <br/>
-Prix TTC:
-<?php echo $cours['prix_c_ttc'] * count($participants); ?> <br/>
-<br/>
+<div class="costs">
+<dl>
+  <dt>Prix HT</dt>
+  <dd><?php echo $cours['prix_c_ht'] * count($participants); ?> </dd>
+</dl>
+<dl>
+  <dt>Prix TTC</dt>
+  <dd><?php echo $cours['prix_c_ttc'] * count($participants); ?> </dd>
+</dl>
+</div>
+
   <p class="buttons">
-    <button type="submit">Confirmer</button>
+    <button type="submit" class="big">Confirmer</button>
   </p>
 <?php else: ?>
 <p class="noItems">aucun participant</p>
