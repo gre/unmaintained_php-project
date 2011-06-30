@@ -63,4 +63,3 @@ $this->setLayoutVar('nav', array("/ingenieur/index" => "Sessions"));
   </tbody>
 </table>
 
-<todo>Une pagination ici</todo>

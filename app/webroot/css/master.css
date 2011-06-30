@@ -40,6 +40,22 @@ em {
     font-style: italic;
 }
 
+
+a.register {
+    padding: 10px;
+    font-size: 1.2em;
+    color: #000;
+    background: #ddd;
+    border: 2px solid #555;
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
+    -moz-border-radius: 10px;
+    text-decoration: none;
+}
+a.register:hover {
+    color: #333;
+    border-color: #777;
+}
+
 p.noItems {
     text-align: center;
     text-transform: uppercase;
@@ -249,7 +265,7 @@ footer {
 }
 #content {
   padding: 0;
-	margin: 1em 0;
+	margin: 1em;
 }
 
 ul.mainNav {

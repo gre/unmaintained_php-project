@@ -24,5 +24,7 @@ $this->setLayoutVar('nav', array("/client/auth" => "Connexion client"));
 </div>
 <div class="half">
   <h2>Pas encore inscrit ?</h2>
-  <a href="/client/inscription">S'inscrire</a>
+    <p class="center">  
+        <a class="register" href="/client/inscription">S'inscrire</a>
+    </p>
 </div>
