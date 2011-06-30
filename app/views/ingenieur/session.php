@@ -1,5 +1,5 @@
 <?php
-$name="CSS3";
+$name=$session['nom_c'];
 $this->setLayoutVar('pageTitle', 'Détail de la session '.$name.' et participants');
 $this->setLayoutVar('nav', array("/ingenieur/index" => "Sessions", "" => $name));
 $this->setLayoutVar('connected', true);
