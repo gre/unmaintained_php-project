@@ -21,7 +21,7 @@ class SessionController extends AppController
         $session = SessionModel::getSession($this->get['nom_c'], $this->get['date_deb_ses']);
         if (empty($session)) $this->redirect('/session/index');
         
-        $participants = ParticipantModel::getBySession($this->get['nom_c'], $this->get['date_deb_ses']);
+        $participants = ParticipantModel::getBySessionAndClient($this->get['nom_c'], $this->get['date_deb_ses'],$this->getLoggedUserId());
         
         $this->setVar('session',$session);
         $this->setVar('participants',$participants);

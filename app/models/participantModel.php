@@ -9,6 +9,15 @@ class ParticipantModel extends AppModel {
 			  WHERE nom_c=$1 AND date_deb_ses=$2',
 	  	array($nom_c,$date_deb_ses)) );
   }
+
+  static function getBySessionAndClient($nom_c, $date_deb_ses, $client)
+  {
+	  return self::fetchAll(self::query(
+			  'SELECT Participant.*, Client.nom_client FROM Participant
+			  LEFT JOIN Client ON Participant.code_client=Client.code_client
+			  WHERE nom_c=$1 AND date_deb_ses=$2 AND Participant.code_client=$3',
+	  	array($nom_c,$date_deb_ses,$client)) );
+  }
   
   static function getNomParticipant($code_client, $nom_c, $date_deb_ses, $nom_part) {
     return self::fetchFirst(self::query(

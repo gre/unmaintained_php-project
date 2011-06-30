@@ -56,7 +56,9 @@ class ClientController extends AppController
     	$error = "Code postal incorrect";
     }
     
-    if (!ClientModel::getByLogin($this->post['login'])) {
+    $this->setVars($this->post);
+    
+    if (ClientModel::getByLogin($this->post['login'])) {
         $this->setLayoutVar('error',"Erreur, cet identifiant est déjà utilisé.");
         $this->render();
     }
@@ -66,7 +68,6 @@ class ClientController extends AppController
     
     if (!$codeClient || $error) {
         $this->setLayoutVar('error',($error===true?"Erreur, vérifier les champs.":$error));
-        $this->setVars($this->post);
         $this->loadView('client/inscription');
         return;
     }
