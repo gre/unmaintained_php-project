@@ -10,7 +10,8 @@ define('WWW_IMAGE_PATH', WWW_BASE_PATH . 'images/');
 
 // Database configuration
 include('credentials.php');
-define('DEBUG',true);
+
+define('DEBUG',false);
 
 if (!DEBUG)
 {
