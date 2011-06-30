@@ -33,4 +33,5 @@ include(APP_PATH . 'classes/AppModel.class.php');
 // Load Routes
 include(dirname(__FILE__) . '/routes.php');
 
+date_default_timezone_set('Europe/Paris');
 ?>

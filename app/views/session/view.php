@@ -45,10 +45,12 @@ $this->setLayoutVar('connected', true);
   	<?php foreach($participants AS $participant): ?>
     <tr>
       <td><?php e($participant['nom_part']) ?></td>
-      <td><?php e($participant['date_inscrpt']) ?></td>
+      <td><?php e(date("Y-m-d H:i",strtotime($participant['date_inscrpt']))) ?></td>
       <td>
-        <button type="button" disabled="disabled">Modifier</button>
-        <button type="submit" name="nom_part" value="<?php e($participant['nom_part']) ?>" onclick="return confirm('Annuler l\'inscription de <?php e($participant['nom_part']) ?> ?')">Supprimer</button>
+        <button type="button" disabled="disabled" >Modifier</button>
+        <?php $delete_enabled = false;
+        if ( (strtotime($session['date_deb_ses']) - time()) < 60*60*24* 10) $delete_enabled = true;?>
+        <button <?php echo ($delete_enabled?'disabled="disabled"':'')?> type="submit" name="nom_part" value="<?php e($participant['nom_part']) ?>" onclick="return confirm('Annuler l\'inscription de <?php e($participant['nom_part']) ?> ?')">Supprimer</button>
       </td>
     </tr>
     <?php endforeach; ?>
