@@ -33,7 +33,7 @@ class ClientController extends AppController
         $this->redirect("/session/index");
         die();
     }
-    $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
+    $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe est incorrect.");
     $this->render();
   }
   public function actionInscription()
@@ -65,7 +65,7 @@ class ClientController extends AppController
     	$codeClient = ClientModel::register($this->post);
     
     if (!$codeClient || $error) {
-        $this->setLayoutVar('error',($error===true?"Erreur, vérifier les données dans les champs.":$error));
+        $this->setLayoutVar('error',($error===true?"Erreur, vérifier les champs.":$error));
         $this->setVars($this->post);
         $this->loadView('client/inscription');
         return;
@@ -85,7 +85,7 @@ class ClientController extends AppController
     if(is_null($sessionId))
       throw new Lvc_Exception("Forbidden."); // FIXME ? comment utiliser ?
     if($sessionId!=1 && $sessionId!=2 && $sessionId!=3)
-      throw new Lvc_Exception("Session non trouv��e."); // FIXME ? comment utiliser ?
+      throw new Lvc_Exception("Session introuvable."); // FIXME ? comment utiliser ?
     $this->setVar('sessionId', $sessionId); // erf, DRY!
     $this->loadView('client/session'); // erf DRY!
   }

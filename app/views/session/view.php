@@ -28,7 +28,7 @@ $this->setLayoutVar('connected', true);
 <h2>Vos participants</h2>
 
 <?php if (empty($participants)): ?>
-<p>Aucun de vos participants.</p>
+<p class="noItems">Aucun participant</p>
 <?php else: ?>
 
 <form method="POST" action="/session/delete">

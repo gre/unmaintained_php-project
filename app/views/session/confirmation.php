@@ -1,10 +1,10 @@
 <?php
-$this->setLayoutVar('pageTitle', 'Session '.$session['nom_c'].' : Nouveau participants');
+$this->setLayoutVar('pageTitle', 'Session '.$session['nom_c'].' : Nouveaux participants');
 $this->setLayoutVar('nav', array("/client/index" => "Sessions", "/session/view?nom_c={$session['nom_c']}&date_deb_ses={$session['date_deb_ses']}" => $session['nom_c'].' : Nouveau participants'));
 $this->setLayoutVar('connected', true);
 ?>
 
-<h2>Confirmer l'inscription des nouveau participants</h2>
+<h2>Confirmer l'inscription des nouveaux participants</h2>
 <?php if (count($participants)): ?>
 <form method="POST" action="/session/addParticipants">
 <input type="hidden" name="nom_c" value="<?php echo $session['nom_c']?>"/>

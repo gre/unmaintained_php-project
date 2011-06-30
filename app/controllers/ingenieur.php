@@ -19,7 +19,7 @@ class IngenieurController extends AppController
         self::setAuthentified($user['no_employe'],'ingenieur');
         $this->redirect("/ingenieur/index");
       } else {
-        $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
+        $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe est incorrect.");
       }
     }
   }

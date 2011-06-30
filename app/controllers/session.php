@@ -38,13 +38,13 @@ class SessionController extends AppController
         
         foreach($this->post['nom_part'] AS $nom_part) {
         	if ($session_place_libre == 0) {
-        		$errors[] = "Il n'y a plus d'espace pour " . $nom_part;
+        		$errors[] = "Il n'y a plus de place pour " . $nom_part;
         		continue;
         	}
         	
         	$participantAlready = ParticipantModel::getNomParticipant($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$nom_part);
         	if ($participantAlready != false) {
-        		$errors[] = $nom_part . " est deja inscrit";
+        		$errors[] = $nom_part . " est déjà inscrit";
         	} else {
                   $participants[] = $nom_part;
                   $session_place_libre--;
@@ -61,7 +61,7 @@ class SessionController extends AppController
     	
         $isAdded = ParticipantModel::addParticipants($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$this->post['participant']);
         if ($isAdded !== true) {
-        	$error = "Le participant " . $isAdded . " est déjà inscrit à cette session, la transaction a été annulé";
+        	$error = "Le participant " . $isAdded . " est déjà inscrit à cette session, la transaction a été annulée";
         }
         $this->setVar('error',$error);
         

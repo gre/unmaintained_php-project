@@ -29,7 +29,7 @@ class AdminController extends AppController
         $this->redirect("/admin/index");
         die();
       } else {
-        $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe sont incorrect.");
+        $this->setLayoutVar('error',"Erreur, l'identifiant ou le mot de passe est incorrect.");
       }
     }
   }
