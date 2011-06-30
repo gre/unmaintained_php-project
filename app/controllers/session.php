@@ -56,18 +56,19 @@ class SessionController extends AppController
         $this->setVar('cours',$cours);
         $this->loadView("session/confirmation");
     }
-    public function actionaddParticipants() {
+    public function actionAddParticipants() {
     	$error = false;
     	
         $isAdded = ParticipantModel::addParticipants($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],$this->post['participant']);
         if ($isAdded !== true) {
         	$error = "Le participant " . $isAdded . " est déjà inscrit à cette session, la transaction a été annulée";
         }
-        $this->setVar('error',$error);
+        if ($error !== false)
+          $this->flashTemplateVar(array('error'=>$error));
         
         $this->redirect("/session/view?nom_c={$this->post['nom_c']}&date_deb_ses={$this->post['date_deb_ses']}");
         
-        die();
+        
     }
     
     public function actionDelete() {
@@ -76,5 +77,27 @@ class SessionController extends AppController
     	$this->redirect("/session/view?nom_c={$this->post['nom_c']}&date_deb_ses={$this->post['date_deb_ses']}");
     	
     	die();
+    }
+    
+    public function actionUpdateParticipant() {
+      $error = false;
+      
+      if (empty($this->post['new_part'])) {
+        $error = 'Le nouveau nom est trop court';
+      }
+      
+      if ($error === false) {
+        if (!ParticipantModel::updateParticipant($this->getLoggedUserId(),$this->post['nom_c'],$this->post['date_deb_ses'],
+                                          $this->post['old_part'],$this->post['new_part']) ) {
+          
+          $error = "Un participant avec ce nom est déjà inscrit";
+        }
+      }
+      
+      if ($error !== false)
+        $this->flashTemplateVar(array('error'=>$error));
+      
+      $this->redirect("/session/view?nom_c={$this->post['nom_c']}&date_deb_ses={$this->post['date_deb_ses']}");
+      die();
     }
 }

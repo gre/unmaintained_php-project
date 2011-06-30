@@ -104,6 +104,7 @@ form.auth {
   font-size: 1.1em;
   font-weight: bold;
   color: #fff;
+  margin-bottom: 10px;
 }
 
 form fieldset {

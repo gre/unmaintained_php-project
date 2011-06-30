@@ -5,7 +5,6 @@ $this->setLayoutVar('connected', true);
 
 ?>
 
-
 <table>
   <thead>
     <tr>
@@ -47,7 +46,7 @@ $this->setLayoutVar('connected', true);
       <td><?php e($participant['nom_part']) ?></td>
       <td><?php e(date("Y-m-d H:i",strtotime($participant['date_inscrpt']))) ?></td>
       <td>
-        <button type="button" disabled="disabled" >Modifier</button>
+        <button type="button" onclick="updateParticipant('<?php e($participant['nom_part']) ?>',prompt('Nouveau nom du participant','<?php e($participant['nom_part']) ?>'))">Modifier</button>
         <?php $delete_enabled = false;
         if ( (strtotime($session['date_deb_ses']) - time()) < 60*60*24* 10) $delete_enabled = true;?>
         <button <?php echo ($delete_enabled?'disabled="disabled"':'')?> type="submit" name="nom_part" value="<?php e($participant['nom_part']) ?>" onclick="return confirm('Annuler l\'inscription de <?php e($participant['nom_part']) ?> ?')">Supprimer</button>
@@ -80,12 +79,28 @@ $this->setLayoutVar('connected', true);
     <button type="submit">Inscrire</button>
   </p>
 </form>
+<form method="POST" action="/session/updateParticipant" id="updateParticipant">
+<input type="hidden" name="nom_c" value="<?php echo $session['nom_c']?>"/>
+<input type="hidden" name="date_deb_ses" value="<?php echo $session['date_deb_ses']?>"/>
+<input type="hidden" name="old_part" value=""/>
+<input type="hidden" name="new_part" value=""/>
+</form>
+
 <script type="text/javascript">
-	$(function(){
-		$('#moreParticipant').click(function() {
-			var participant = $('.participant').clone().removeClass('participant');
-			$('input[type="text"]', participant).val("");
-			participant.appendTo('.participants');
-		});
-	})();
+function updateParticipant(old_participant,new_participant) {
+  if (!new_participant) return false;
+  $('#updateParticipant [name="old_part"]').val(old_participant);
+  $('#updateParticipant [name="new_part"]').val(new_participant);
+  $('#updateParticipant').submit();
+}
+
+$(function(){
+  $('#moreParticipant').click(function() {
+    var participant = $('.participant').clone().removeClass('participant');
+    $('input[type="text"]', participant).val("");
+    participant.appendTo('.participants');
+    return false;
+  });
+});
+
 </script>

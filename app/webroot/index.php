@@ -1,4 +1,9 @@
 <?php
+if ( false === function_exists('lcfirst') ):
+    function lcfirst( $str )
+    { return (string)(strtolower(substr($str,0,1)).substr($str,1));}
+endif; 
+
 
 if (isset($_GET['url']) && $_GET['url'] === 'favicon.ico') {
 	
@@ -48,4 +53,6 @@ function __autoload($class_name) {
 		include($file);
 	}
 }
+
+
 ?>

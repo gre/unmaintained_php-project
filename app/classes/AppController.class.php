@@ -36,6 +36,8 @@
           
           // Jobs
           // include(APP_PATH . 'jobs/importdb.php');
+          
+          $this->flashTemplateVarCheck();
         }
 	
         protected function getFullName() {
@@ -125,6 +127,17 @@
     public function render() {
         $this->loadView($this->getControllerName().'/'.$this->getActionName());
         exit();
+    }
+    
+    public function flashTemplateVar($array) {
+      $_SESSION['flashTemplateVar'] = $array;
+    }
+    
+    public function flashTemplateVarCheck() {
+      if (isset($_SESSION['flashTemplateVar']) && is_array($_SESSION['flashTemplateVar'])) {
+        $this->setLayoutVar('error',$_SESSION['flashTemplateVar']['error']);
+        $_SESSION['flashTemplateVar'] = null;
+      }
     }
 }
 

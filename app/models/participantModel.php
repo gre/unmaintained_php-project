@@ -36,15 +36,21 @@ class ParticipantModel extends AppModel {
   	return true;
   }
   static function deleteParticipant($code_client, $nom_c, $date_deb_ses, $nom_part) {
+    $session = SessionModel::getSession($nom_c, $date_deb_ses);
+    if ( (strtotime($session['date_deb_ses']) - time()) < 60*60*24* 10) {
+      
+    }
+    
     self::query("START TRANSACTION");
-  	$cours = CoursModel::getById($nom_c);
+    $cours = CoursModel::getById($nom_c);
+    
   	
   	if (self::getNomParticipant($code_client, $nom_c, $date_deb_ses, $nom_part) == false) {
   		self::query("ROLLBACK");
   		return false;
   	}
-  	if (!self::query("DELETE FROM Participant WHERE 
-  		code_client=$1 AND nom_c=$2 AND date_deb_ses=$3 AND nom_part=$4",
+  	if (!self::query('DELETE FROM Participant WHERE 
+  		code_client=$1 AND nom_c=$2 AND date_deb_ses=$3 AND nom_part=$4',
   		array($code_client, $nom_c, $date_deb_ses, $nom_part) )) {
 		self::query("ROLLBACK");
 		return false;
@@ -53,5 +59,22 @@ class ParticipantModel extends AppModel {
 		array($cours['prix_c_ttc'],$cours['nom_dom']) );
     
   	self::query("COMMIT");
+  }
+  
+  static function updateParticipant($code_client, $nom_c, $date_deb_ses, $nom_part_old, $nom_part_new) {
+    self::query("START TRANSACTION");
+  	
+    if (self::getNomParticipant($code_client, $nom_c, $date_deb_ses, $nom_part_old) == false) {
+	    self::query("ROLLBACK");
+	    return false;
+    }
+    
+    self::query('UPDATE Participant SET
+		nom_part=$5
+		WHERE 
+  		code_client=$1 AND nom_c=$2 AND date_deb_ses=$3 AND nom_part=$4',
+  		array($code_client, $nom_c, $date_deb_ses, $nom_part_old, $nom_part_new) );
+    
+    return self::query("COMMIT");
   }
 }
