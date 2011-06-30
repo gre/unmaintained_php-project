@@ -5,6 +5,10 @@ $this->setLayoutVar('nav', array("" => "Administration"));
 
 <h1>Clients</h1>
 <h2>Nouveaux clients en attente d'inscription</h2>
+
+<?php if(count($unconfirmedUsers)==0) : ?>
+<p class="noItems">Aucun</p> 
+<?php else: ?>
 <table>
   <thead>
     <tr>
@@ -31,8 +35,12 @@ $this->setLayoutVar('nav', array("" => "Administration"));
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php endif; ?>
 
 <h2>Les derniers clients confirmés ou refusés</h2>
+<?php if(count($lastUsers)==0) : ?>
+<p class="noItems">Aucun</p> 
+<?php else: ?>
 <table id="clients">
   <thead>
     <tr>
@@ -64,6 +72,7 @@ $this->setLayoutVar('nav', array("" => "Administration"));
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php endif; ?>
 
 <script type="text/javascript">
 $(function(){

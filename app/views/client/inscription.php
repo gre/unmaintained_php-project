@@ -8,7 +8,7 @@ $this->setLayoutVar('nav', array("/client/auth" => "Connexion client", "" => "S'
       <legend>Inscription</legend>
     <p>
       <label for="identifiant">Identifiant</label>
-      <input id="login" type="text" name="login" value="<?php e(@$name)?>"/>
+      <input id="login" type="text" name="login" value="<?php e(@$login)?>"/>
     </p>
     <p>
       <label for="password">Mot de passe</label>
@@ -40,3 +40,5 @@ $this->setLayoutVar('nav', array("/client/auth" => "Connexion client", "" => "S'
     </p>
     </fieldset>
   </form>
+
+    <p class="info"><em>Tous les champs sont requis</em></p>
